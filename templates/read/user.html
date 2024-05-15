@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% block title %}{{user.username}}{% endblock %}
+{% block content %}
+<div class="border-bottom">
+    <h1>{{user.username}}</h1>
+    <p class="mb-2">Joined {{user.date_joined|naturalday}}</p>
+</div>
+
+<ul class="list-group">
+    {% for feed in feeds %}
+    <li href="/feed/{{feed.id}}" class="list-group-item">
+        <div class="d-flex w-100 justify-content-between">
+            <h3 class="mb-1"><a href="/feed/{{feed.id}}">{{feed.title}}</a></h3>
+            <small class="text-body-secondary">{{feed.created_at|naturalday}}</small>
+        </div>
+        <p class="mb-1">{{feed.description}}</p>
+        <small class="text-body-secondary">
+            Created by <a href="/user/{{feed.author.username}}">{{feed.author.username}}</a>.
+        </small>
+    </li>
+    {% empty %}
+    <p>No feeds yet</p>
+    {% endfor %}
+</ul>
+{% endblock %}

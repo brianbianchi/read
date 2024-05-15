@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% load humanize %}
+{% block title %}{{feed.title}}{% endblock %}
+
+{% block content %}
+<div class="border-bottom">
+    <h1>{{feed.title}}</h1>
+    <h3 class="mb-2">{{feed.description}}</h3>
+    <p class="mb-1">
+        Created {{feed.created_at|naturalday}} by
+        <a href="/user/{{feed.author.username}}">{{feed.author.username}}</a>.
+    </p>
+</div>
+
+{% if user == feed.author %}
+<a href="/edit_feed/{{feed.id}}" class="btn btn-primary my-3" role="button">Edit</a>
+{% endif %}
+
+<div class="list-group">
+    {% for sub in subs %}
+    <a href="{{sub.pub.pub_url}}" class="list-group-item list-group-item-action">
+        {{sub.pub.title}}
+    </a>
+    {% empty %}
+    <p>No subs yet</p>
+    {% endfor %}
+</div>
+{% endblock %}

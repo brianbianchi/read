@@ -1,0 +1,243 @@
+[
+    {
+      "model": "read.publication",
+      "pk": 1,
+      "fields": {
+        "title": "Reddit front page",
+        "pub_url": "https://www.reddit.com/",
+        "rss_url": "https://www.reddit.com/.rss",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 2,
+      "fields": {
+        "title": "/r/Programming",
+        "pub_url": "https://www.reddit.com/r/programming/",
+        "rss_url": "https://www.reddit.com/r/programming/.rss",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 3,
+      "fields": {
+        "title": "/r/ProgrammerHumor",
+        "pub_url": "https://www.reddit.com/r/ProgrammerHumor/",
+        "rss_url": "https://www.reddit.com/r/ProgrammerHumor/.rss",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 4,
+      "fields": {
+        "title": "Levels io",
+        "pub_url": "https://levels.io/",
+        "rss_url": "https://levels.io/rss/",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 5,
+      "fields": {
+        "title": "Barking up the wrong tree",
+        "pub_url": "https://bakadesuyo.com/",
+        "rss_url": "https://bakadesuyo.com/feed/",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 6,
+      "fields": {
+        "title": "Wait but why",
+        "pub_url": "https://waitbutwhy.com/",
+        "rss_url": "https://waitbutwhy.com/feed",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 7,
+      "fields": {
+        "title": "Seth Godin",
+        "pub_url": "https://seths.blog/",
+        "rss_url": "https://feeds.feedblitz.com/sethsblog&x=1",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 8,
+      "fields": {
+        "title": "Hacker news",
+        "pub_url": "https://news.ycombinator.com/",
+        "rss_url": "https://news.ycombinator.com/rss",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 9,
+      "fields": {
+        "title": "Melting asphalt",
+        "pub_url": "https://meltingasphalt.com/",
+        "rss_url": "https://feeds.feedburner.com/MeltingAsphalt",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 10,
+      "fields": {
+        "title": "Open AI",
+        "pub_url": "https://openai.com/blog/",
+        "rss_url": "https://openai.com/blog/rss/",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 11,
+      "fields": {
+        "title": "CSS tricks",
+        "pub_url": "https://css-tricks.com/",
+        "rss_url": "https://css-tricks.com/feed/",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 12,
+      "fields": {
+        "title": "dev.to",
+        "pub_url": "https://dev.to/",
+        "rss_url": "https://dev.to/feed/",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 13,
+      "fields": {
+        "title": "Log rocket",
+        "pub_url": "https://blog.logrocket.com/",
+        "rss_url": "https://blog.logrocket.com/feed/",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 14,
+      "fields": {
+        "title": "rachelbythebay",
+        "pub_url": "https://rachelbythebay.com/",
+        "rss_url": "https://rachelbythebay.com/w/atom.xml",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 15,
+      "fields": {
+        "title": "web.dev",
+        "pub_url": "https://web.dev/blog/",
+        "rss_url": "https://web.dev/feed.xml",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 16,
+      "fields": {
+        "title": "Netflix",
+        "pub_url": "https://netflixtechblog.com/",
+        "rss_url": "https://netflixtechblog.com/feed",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 17,
+      "fields": {
+        "title": "A list apart",
+        "pub_url": "https://alistapart.com/articles/",
+        "rss_url": "https://alistapart.com/main/feed/",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 18,
+      "fields": {
+        "title": "Jeff Atwood",
+        "pub_url": "https://blog.codinghorror.com/",
+        "rss_url": "https://blog.codinghorror.com/rss/",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 19,
+      "fields": {
+        "title": "Farnam Street",
+        "pub_url": "https://fs.blog/blog/",
+        "rss_url": "https://fs.blog/blog/feed/",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 20,
+      "fields": {
+        "title": "Paul Graham",
+        "pub_url": "http://www.paulgraham.com/articles.html",
+        "rss_url": "http://www.aaronsw.com/2002/feeds/pgessays.rss",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 21,
+      "fields": {
+        "title": "Joel on software",
+        "pub_url": "https://www.joelonsoftware.com/",
+        "rss_url": "https://www.joelonsoftware.com/feed/",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 22,
+      "fields": {
+        "title": "Irrational Exuberance",
+        "pub_url": "https://lethain.com/",
+        "rss_url": "https://lethain.com/feeds.xml",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 23,
+      "fields": {
+        "title": "Staff engineer",
+        "pub_url": "https://staffeng.com/",
+        "rss_url": "https://staffeng.com/rss",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    },
+    {
+      "model": "read.publication",
+      "pk": 24,
+      "fields": {
+        "title": "Sam Altman",
+        "pub_url": "https://blog.samaltman.com/",
+        "rss_url": "https://blog.samaltman.com/posts.atom",
+        "created_at": "0001-01-01T00:00:00"
+      }
+    }
+  ]
+  
