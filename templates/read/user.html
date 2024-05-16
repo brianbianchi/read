@@ -8,20 +8,53 @@
     <p class="mb-2">Joined {{user.date_joined|naturalday}}</p>
 </div>
 
-<ul class="list-group">
-    {% for feed in feeds %}
-    <li href="/feed/{{feed.id}}" class="list-group-item">
-        <div class="d-flex w-100 justify-content-between">
-            <h3 class="mb-1"><a href="/feed/{{feed.id}}">{{feed.title}}</a></h3>
-            <small class="text-body-secondary">{{feed.created_at|naturalday}}</small>
-        </div>
-        <p class="mb-1">{{feed.description}}</p>
-        <small class="text-body-secondary">
-            Created by <a href="/user/{{feed.author.username}}">{{feed.author.username}}</a>.
-        </small>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+            role="tab" aria-controls="home-tab-pane" aria-selected="true">Subscribed</button>
     </li>
-    {% empty %}
-    <p>No feeds yet</p>
-    {% endfor %}
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button"
+            role="tab" aria-controls="profile-tab-pane" aria-selected="false">Created</button>
+    </li>
 </ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <ul class="list-group">
+            {% for feed in feeds_subscribed %}
+            <li href="/feed/{{feed.id}}" class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h3 class="mb-1"><a href="/feed/{{feed.id}}">{{feed.title}}</a></h3>
+                    <small class="text-body-secondary">{{feed.created_at|naturalday}}</small>
+                </div>
+                <p class="mb-1">{{feed.description}}</p>
+                <small class="text-body-secondary">
+                    Created by <a href="/user/{{feed.author.username}}">{{feed.author.username}}</a>.
+                </small>
+            </li>
+            {% empty %}
+            <p>No feeds yet</p>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        <ul class="list-group">
+            {% for feed in feeds_created %}
+            <li href="/feed/{{feed.id}}" class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h3 class="mb-1"><a href="/feed/{{feed.id}}">{{feed.title}}</a></h3>
+                    <small class="text-body-secondary">{{feed.created_at|naturalday}}</small>
+                </div>
+                <p class="mb-1">{{feed.description}}</p>
+                <small class="text-body-secondary">
+                    Created by <a href="/user/{{feed.author.username}}">{{feed.author.username}}</a>.
+                </small>
+            </li>
+            {% empty %}
+            <p>No feeds yet</p>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
 {% endblock %}

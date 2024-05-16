@@ -13,10 +13,14 @@ def home(request):
 
 def user(request, name):
     user = User.objects.get_by_natural_key(username=name)
-    feeds = Feed.objects.filter(author = user)
-    return render(request, 'read/user.html', {"user": user, "feeds": feeds})
+    feeds_created = Feed.objects.filter(author = user)
+    subs = FeedSubscription.objects.filter(user = user)
+    feeds_subscribed = list(map(lambda s:s.feed, subs))
+    return render(request, 'read/user.html', {"user": user, "feeds_created": feeds_created, "feeds_subscribed": feeds_subscribed})
 
 def feeds(request):
+    if request.method != 'GET':
+        return HttpResponseNotAllowed
     PAGE_SIZE = 5
     page = request.GET.get('page') or 1
     feeds = Feed.objects.all()
@@ -33,7 +37,14 @@ def view_feed(request, id):
         subs = FeedPublication.objects.filter(feed=feed)
     except FeedPublication.DoesNotExist:
         subs = None
-    return render(request, 'read/feed.html', {'feed': feed, 'subs': subs})
+    try:
+        user_subs = FeedSubscription.objects.filter(feed=feed, user=request.user)
+        subd = False
+        if len(user_subs):
+            subd = True
+    except FeedSubscription.DoesNotExist:
+        subd = False
+    return render(request, 'read/feed.html', {'feed': feed, 'subs': subs, 'subd': subd})
 
 @login_required(login_url="/login")
 def create_feed(request):
@@ -79,6 +90,27 @@ def edit_feed(request, id):
             sub.feed = feed
             sub.save()
         return redirect(f'/feed/{feed.id}')
+
+@login_required(login_url="/login")
+def delete_feed(request, id):
+    feed = Feed.objects.get(id=id)
+    if request.user != feed.author:
+        return HttpResponseForbidden
+    feed.delete()
+    return redirect(f'/user/{request.user.username}')
+
+@login_required(login_url="/login")
+def edit_sub(request, id):
+    feed = Feed.objects.get(id=id)
+    sub = FeedSubscription.objects.filter(feed=feed, user=request.user)
+    if len(sub):
+        sub[0].delete()
+    else:
+        new_sub = FeedSubscription()
+        new_sub.user = request.user
+        new_sub.feed = feed
+        new_sub.save()
+    return redirect(f'/feed/{id}')
     
 def register(request):
     if request.method == 'POST':
