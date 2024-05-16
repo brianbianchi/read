@@ -1,11 +1,24 @@
-{% extends 'core/base.html' %} 
-{% block title %}Home Page{% endblock %} 
-{% block content %} 
-<div>Home pages</div>
+{% extends 'core/base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
 
-{% for pub in pubs %}
-<a href="{{pub.pub_url}}">{{pub.title}}</a>
-{% empty %}
-<p>No pubs yet</p>
-{% endfor %}
+<div class="px-4 py-5 my-5 text-center border-bottom">
+    <!-- <img class="d-block mx-auto mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+    <h1 class="display-5 fw-bold text-body-emphasis">Read RSS</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">Don't let an algorithm decide what you do or don't read. Receive a daily, weekly, or
+            monthly email containing the latest articles from your favorite blogs.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Subscribe to a feed</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4">Create a feed</button>
+        </div>
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+        <div class="container px-5">
+            <img src="bootstrap-docs.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image"
+                width="700" height="500" loading="lazy">
+        </div>
+    </div>
+</div>
+
 {% endblock %}

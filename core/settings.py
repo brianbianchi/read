@@ -31,6 +31,7 @@ DEBUG = os.getenv('DEBUG') == "True"
 
 ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', '8r1.dev']
 
+CSRF_TRUSTED_ORIGINS = ['https://8r1.dev']
 
 # Application definition
 
@@ -64,6 +65,12 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 ROOT_URLCONF = 'core.urls'
 
 FIXTURE_DIRS = [os.path.join(BASE_DIR, "fixtures")]
+
+# Directory to store static files
+STATIC_URL = '/static/'
+
+# Add STATICFILES_DIRS if you have additional directories for static files
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 TEMPLATES = [
     {

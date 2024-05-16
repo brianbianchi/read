@@ -8,8 +8,7 @@ from .forms import FeedForm, RegisterForm
 from .models import Feed, Publication, FeedPublication, FeedSubscription
 
 def home(request):
-    pubs = Publication.objects.all()
-    return render(request, 'read/home.html', {"pubs": pubs})
+    return render(request, 'read/home.html')
 
 def user(request, name):
     user = User.objects.get_by_natural_key(username=name)

@@ -13,4 +13,4 @@ class RegisterForm(UserCreationForm):
 class FeedForm(forms.ModelForm):
     class Meta:
         model = Feed
-        fields = ["title", "description", "email_frequency"]
+        fields = ["title", "description"]
