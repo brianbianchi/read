@@ -1,7 +1,8 @@
 <html>
 
 <body>
-  <h1>Links</h1>
+  <h1><a href="https://8r1.dev/feed/{{feed.id}}">{{feed.title}}</a></h1>
+  <p>{{feed.description}}</p>
   {% for feed in feeds %}
   <hr>
   <h2><a href="{{feed.feed.link}}">{{feed.feed.title}}</a></h2>

@@ -4,6 +4,7 @@ from django.template.loader import get_template
 from django.utils import timezone
 import feedparser
 from ...models import FeedPublication, FeedSubscription
+import os
 
 class Command(BaseCommand):
     help = 'Sends an email to all feed subscriptions'
@@ -14,7 +15,7 @@ class Command(BaseCommand):
 
         for sub in subs:
             to_email = sub.user.email
-            email_subject = f"{sub.feed.title} daily subscriptions"
+            email_subject = f"{sub.feed.title} subscriptions"
             feeds_to_email = []
             pubs = FeedPublication.objects.filter(feed=sub.feed)
             for pub in pubs:
@@ -23,53 +24,19 @@ class Command(BaseCommand):
                     feeds_to_email.append(feeds_cache[rss_url])
                     continue
                 feed = feedparser.parse(rss_url)
-                feed['entries'] = feed['entries'][:2]
+                feed['entries'] = feed['entries'][:10]
                 feeds_to_email.append(feed)
                 feeds_cache[rss_url] = feed
             
             template = get_template('read/email.html')
-            context = {'feeds': feeds_to_email}
+            context = {'feeds': feeds_to_email, 'feed': sub.feed}
             message = template.render(context)
 
-            # send_mail(
-            #     subject=subject,
-            #     message=message,
-            #     from_email=None,
-            #     recipient_list=[to_email],
-            #     fail_silently=False,
-            #     html_message=message
-            # )
-            print(message)
-                
-
-
-
-
-        # subject = "Your Email Subject"
-        # to_email = "briguy2486@aim.com"
-
-        # email_message = EmailMessage(subject, body, 
-        # from_email='your_email_address', to=[to_email])
-        # email_message.send()
-
-        # order_items = [
-        #     {'name': 'Item A', 'quantity': 2},
-        #     {'name': 'Item B', 'quantity': 3},
-        # ]
-        # recipient_name = 'John Doe'
-        # template = get_template('read/email.html')
-        # context = {'recipient_name': recipient_name, 
-        #                           'order_items': order_items}
-        # message = template.render(context)
-
-        # send_mail(
-        #     subject=subject,
-        #     message=message,
-        #     from_email=None,
-        #     recipient_list=[to_email],
-        #     fail_silently=False,
-        #     html_message=message
-        # )
-        # self.stdout.write('sent')
-        # time = timezone.now().strftime('%X')
-        # self.stdout.write("It's now %s" % time)
+            send_mail(
+                subject=email_subject,
+                message=message,
+                from_email=os.getenv('EMAIL_HOST_USER'),
+                recipient_list=[to_email],
+                fail_silently=False,
+                html_message=message
+            )
