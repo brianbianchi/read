@@ -53,9 +53,7 @@ def create_feed(request):
             feed = form.save(commit=False)
             feed.author = request.user
             feed.save()
-            sub = FeedSubscription()
-            sub.feed = feed
-            sub.user = request.user
+            sub = FeedSubscription(feed=feed, user=request.user)
             sub.save()
             return redirect(f"/feed/{feed.id}")
     else:
@@ -84,9 +82,7 @@ def edit_feed(request, id):
         FeedPublication.objects.filter(feed=feed).delete()
         for sub_rss_url in form_subs:
             pub = next((pub for pub in pubs if pub.rss_url == sub_rss_url), None)
-            sub = FeedPublication()
-            sub.pub = pub
-            sub.feed = feed
+            sub = FeedPublication(pub=pub, feed=feed)
             sub.save()
         return redirect(f'/feed/{feed.id}')
 
@@ -117,7 +113,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('/home')
+            return redirect('/')
     else:
         form = RegisterForm()
 
