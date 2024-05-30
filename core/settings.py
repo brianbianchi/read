@@ -66,11 +66,9 @@ ROOT_URLCONF = 'core.urls'
 
 FIXTURE_DIRS = [os.path.join(BASE_DIR, "fixtures")]
 
-# Directory to store static files
+# Static files
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# Add STATICFILES_DIRS if you have additional directories for static files
-STATICFILES_DIRS = [os.path.join(STATIC_ROOT, 'images/')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 TEMPLATES = [
     {
