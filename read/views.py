@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.http import HttpResponseForbidden, HttpResponseNotAllowed
 from django.shortcuts import redirect, render
+import requests, re
+from bs4 import BeautifulSoup
 from .forms import FeedForm, RegisterForm
 from .models import Feed, Publication, FeedPublication, FeedSubscription
 
@@ -27,6 +29,17 @@ def feeds(request):
     #todo order by date
     feeds_page = paginator.get_page(page)
     return render(request, 'read/feeds.html', {'feeds': feeds_page})
+
+def pubs(request):
+    if request.method != 'GET':
+        return HttpResponseNotAllowed
+    PAGE_SIZE = 25
+    page = request.GET.get('page') or 1
+    pubs = Publication.objects.all()
+    paginator = Paginator(pubs, PAGE_SIZE)
+    #todo order by date
+    pubs_page = paginator.get_page(page)
+    return render(request, 'read/pubs.html', {'pubs': pubs_page})
 
 def view_feed(request, id):
     if request.method != 'GET':
@@ -118,3 +131,37 @@ def register(request):
         form = RegisterForm()
 
     return render(request, 'registration/register.html', {"form": form})
+
+@login_required(login_url="/login")
+def create_pub(request):
+    if request.method == 'POST':
+        url = (request.POST.get('link'))
+        rss = get_rss_feed(url)
+        if rss:
+            title = (request.POST.get('title'))
+            pub = Publication(pub_url = url, rss_url = rss, title = title)
+            pub.save()
+            return redirect('/pubs')
+        
+    return render(request, 'read/create_pub.html')
+
+def get_rss_feed(website_url):
+    if website_url is None or not website_url.startswith('https://'):
+        return None
+    if website_url.startswith('https://www.reddit.com/'):
+        if not website_url.endswith('/'):
+            website_url = website_url + '/'
+        return str(website_url + '.rss')
+    source_code = requests.get(website_url)
+    plain_text = source_code.text
+    soup = BeautifulSoup(plain_text, features="html.parser")
+    for link in soup.find_all("link", {"type" : "application/rss+xml"}):
+        href = link.get('href')
+        if not href.startswith('http'):
+            if href.startswith('/') and website_url.endswith('/'):
+                href = href[1:]
+            if not href.startswith('/') and not website_url.endswith('/'):
+                href = '/' + href
+            href = website_url + href
+        return str(href)
+

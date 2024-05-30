@@ -29,7 +29,14 @@ class Command(BaseCommand):
                 feeds_cache[rss_url] = feed
             
             template = get_template('read/email.html')
-            context = {'feeds': feeds_to_email, 'feed': sub.feed}
+            user = sub.user
+            base_url = os.getenv('BASE_URL')
+            context = {
+                'base_url': base_url,
+                'feed': sub.feed,
+                'feeds': feeds_to_email, 
+                'user': user
+            }
             message = template.render(context)
 
             send_mail(

@@ -1,22 +1,21 @@
 <html>
 
 <body>
-  <h1><a href="https://8r1.dev/feed/{{feed.id}}">{{feed.title}}</a></h1>
+  <h1><a href="{{base_url}}/feed/{{feed.id}}">{{feed.title}}</a></h1>
   <p>{{feed.description}}</p>
-  {% for feed in feeds %}
+  {% for pub in feeds %}
   <hr>
-  <h2><a href="{{feed.feed.link}}">{{feed.feed.title}}</a></h2>
-  <p>{{feed.feed.description}}</p>
+  <h2><a href="{{pub.feed.link}}">{{pub.feed.title}}</a></h2>
+  <p>{{pub.feed.description}}</p>
 
   <ul>
-    {% for entry in feed.entries %}
+    {% for entry in pub.entries %}
     <li><a href="{{entry.link}}">{{entry.title}}</a></li>
     {% endfor %}
   </ul>
   {% endfor %}
-  <!-- <hr>
-    <a href="{{.BaseUrl}}/{{.Code}}">Manage subscriptions</a>
-    <a href="{{.BaseUrl}}/unsubscribe/{{.Code}}">Unsubscribe</a> -->
+  <hr>
+  <a href="{{base_url}}/user/{{user.username}}">Manage subscriptions</a>
 </body>
 
 </html>

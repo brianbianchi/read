@@ -1,6 +1,8 @@
+bs4
 Django
 django-crispy-forms
 crispy-bootstrap5
 feedparser
 psycopg2-binary
 python-dotenv
+requests
