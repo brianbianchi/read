@@ -6,6 +6,7 @@ class Publication(models.Model):
     pub_url = models.CharField(max_length=200)
     rss_url = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
+    num_feeds = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title + "\n" + self.pub_url
@@ -17,6 +18,8 @@ class Feed(models.Model):
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    num_pubs = models.IntegerField(default=0)
+    num_subs = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title + "\n" + self.description

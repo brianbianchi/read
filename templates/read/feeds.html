@@ -15,7 +15,10 @@
     <a href="/feed/{{feed.id}}" class="list-group-item list-group-item-action" aria-current="true">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{feed.title}}</h5>
-            <small>3 subscribers<br>3 pubs</small>
+            <small>
+                {{feed.num_subs}} subscriber{% if feed.num_subs != 1 %}s{% endif %}<br>
+                {{feed.num_pubs}} publication{% if feed.num_pubs != 1 %}s{% endif %}
+            </small>
         </div>
         <p class="mb-1">{{feed.description}}</p>
         <small>

@@ -15,7 +15,9 @@
     <a href="{{pub.pub_url}}" class="list-group-item list-group-item-action" aria-current="true">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{pub.title}}</h5>
-            <small>3 subscribers<br>3 pubs</small>
+            <small>
+                {{pub.num_feeds}} feed{% if pub.num_feeds != 1 %}s{% endif %}
+            </small>
         </div>
         <p class="mb-1">{{pub.rss_url}}</p>
         <small>

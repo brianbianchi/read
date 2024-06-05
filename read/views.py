@@ -50,7 +50,7 @@ def view_feed(request, id):
     except FeedPublication.DoesNotExist:
         subs = None
     try:
-        user_subs = FeedSubscription.objects.filter(feed=feed, user=request.user)
+        user_subs = FeedSubscription.objects.filter(feed=feed, user=request.user.id)
         subd = False
         if len(user_subs):
             subd = True
