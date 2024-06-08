@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+{% load humanize %}
+{% block title %}{{feed.title}}{% endblock %}
+
+{% block content %}
+<div class="border-bottom">
+    <h1>{{pub.title}}</h1>
+    <h3 class="mb-2"><a href="{{pub.pub_url}}">{{pub.pub_url}}</a></h3>
+    <h3 class="mb-2"><a href="{{pub.rss_url}}">{{pub.rss_url}}</a></h3>
+    <p class="mb-1">
+        Created {{pub.created_at|naturalday}}.
+    </p>
+</div>
+
+<ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+            role="tab" aria-controls="home-tab-pane" aria-selected="true">
+            Feeds <span class="badge text-bg-info">{{feeds|length}}</span>
+        </button>
+    </li>
+</ul>
+<div class="tab-content mt-3" id="myTabContent">
+    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <ul class="list-group">
+            {% for feed in feeds %}
+            <li href="/feed/{{feed.id}}" class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h3 class="mb-1"><a href="/feed/{{feed.id}}">{{feed.title}}</a></h3>
+                    <small class="text-body-secondary">
+                        {{feed.num_subs}} subscriber{% if feed.num_subs != 1 %}s{% endif %}<br>
+                        {{feed.num_pubs}} publication{% if feed.num_pubs != 1 %}s{% endif %}
+                    </small>
+                </div>
+                <p class="mb-1">{{feed.description}}</p>
+                <small class="text-body-secondary">
+                    Created {{feed.created_at|naturalday}} by <a href="/user/{{feed.author.username}}">{{feed.author.username}}</a>.
+                </small>
+            </li>
+            {% empty %}
+            <p>No feeds yet</p>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

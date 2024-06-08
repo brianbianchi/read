@@ -30,6 +30,17 @@ def feeds(request):
     feeds_page = paginator.get_page(page)
     return render(request, 'read/feeds.html', {'feeds': feeds_page})
 
+def pub(request, id):
+    if request.method != 'GET':
+        return HttpResponseNotAllowed
+    pub = Publication.objects.get(id=id)
+    try:
+        feeds_pubs = FeedPublication.objects.filter(pub=pub)
+        feeds = list(map(lambda s:s.feed, feeds_pubs))
+    except:
+        feeds = None
+    return render(request, 'read/pub.html', {'pub': pub, 'feeds': feeds})
+
 def pubs(request):
     if request.method != 'GET':
         return HttpResponseNotAllowed
@@ -46,17 +57,24 @@ def view_feed(request, id):
         return HttpResponseNotAllowed
     feed = Feed.objects.get(id=id)
     try:
-        subs = FeedPublication.objects.filter(feed=feed)
+        feed_pubs = FeedPublication.objects.filter(feed=feed)
+        pubs = list(map(lambda s:s.pub, feed_pubs))
+    except FeedPublication.DoesNotExist:
+        pubs = None
+    try:
+        feed_subs = FeedSubscription.objects.filter(feed=feed)
+        subs = list(map(lambda s:s.user, feed_subs))
     except FeedPublication.DoesNotExist:
         subs = None
-    try:
-        user_subs = FeedSubscription.objects.filter(feed=feed, user=request.user.id)
-        subd = False
-        if len(user_subs):
-            subd = True
-    except FeedSubscription.DoesNotExist:
-        subd = False
-    return render(request, 'read/feed.html', {'feed': feed, 'subs': subs, 'subd': subd})
+    subd = False
+    if request.user:
+        try:
+            user_subs = FeedSubscription.objects.filter(feed=feed, user=request.user.id)
+            if len(user_subs):
+                subd = True
+        except FeedSubscription.DoesNotExist:
+            subd = False
+    return render(request, 'read/feed.html', {'feed': feed, 'pubs': pubs, 'subs': subs, 'subd': subd})
 
 @login_required(login_url="/login")
 def create_feed(request):

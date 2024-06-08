@@ -12,13 +12,14 @@
 
 <div class="list-group">
     {% for pub in pubs %}
-    <a href="{{pub.pub_url}}" class="list-group-item list-group-item-action" aria-current="true">
+    <a href="pub/{{pub.id}}" class="list-group-item list-group-item-action" aria-current="true">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{pub.title}}</h5>
             <small>
                 {{pub.num_feeds}} feed{% if pub.num_feeds != 1 %}s{% endif %}
             </small>
         </div>
+        <p class="mb-1">{{pub.pub_url}}</p>
         <p class="mb-1">{{pub.rss_url}}</p>
         <small>
             Created {{pub.created_at|naturalday}}

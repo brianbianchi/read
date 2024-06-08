@@ -12,6 +12,7 @@ urlpatterns = [
     path('edit_feed/<int:id>/', views.edit_feed, name='edit_feed'),
     path('delete_feed/<int:id>/', views.delete_feed, name='delete_feed'),
 
+    path('pub/<int:id>/', views.pub, name='view_pub'),
     path('pubs', views.pubs, name='pubs'),
     path('create_pub/', views.create_pub, name='create_pub'),
 
