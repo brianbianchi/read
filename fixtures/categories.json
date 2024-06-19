@@ -1,0 +1,282 @@
+[
+    {
+        "model": "read.publication_category",
+        "pk": 1,
+        "fields": {
+            "name": "Lifestyle"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 2,
+        "fields": {
+            "name": "Health & Fitness"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 3,
+        "fields": {
+            "name": "Food & Recipes"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 4,
+        "fields": {
+            "name": "Travel"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 5,
+        "fields": {
+            "name": "Personal Growth"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 6,
+        "fields": {
+            "name": "Parenting"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 7,
+        "fields": {
+            "name": "Home & Garden"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 8,
+        "fields": {
+            "name": "Business & Career"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 9,
+        "fields": {
+            "name": "Entrepreneurship"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 10,
+        "fields": {
+            "name": "Marketing & Social Media"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 11,
+        "fields": {
+            "name": "Personal Finance"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 12,
+        "fields": {
+            "name": "Productivity & Time Management"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 13,
+        "fields": {
+            "name": "Leadership & Management"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 14,
+        "fields": {
+            "name": "Career Advice"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 15,
+        "fields": {
+            "name": "Technology"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 16,
+        "fields": {
+            "name": "Software & Apps"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 17,
+        "fields": {
+            "name": "Gadgets & Gear"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 18,
+        "fields": {
+            "name": "Web Design & Development"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 19,
+        "fields": {
+            "name": "Cybersecurity"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 20,
+        "fields": {
+            "name": "Artificial Intelligence"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 21,
+        "fields": {
+            "name": "Gaming"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 22,
+        "fields": {
+            "name": "Arts & Entertainment"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 23,
+        "fields": {
+            "name": "Books & Literature"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 24,
+        "fields": {
+            "name": "Movies & TV"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 25,
+        "fields": {
+            "name": "Music"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 26,
+        "fields": {
+            "name": "Photography"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 27,
+        "fields": {
+            "name": "Fashion & Beauty"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 28,
+        "fields": {
+            "name": "Celebrities"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 29,
+        "fields": {
+            "name": "News & Politics"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 30,
+        "fields": {
+            "name": "Current Events"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 31,
+        "fields": {
+            "name": "Social Issues"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 32,
+        "fields": {
+            "name": "Politics"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 33,
+        "fields": {
+            "name": "Business News"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 34,
+        "fields": {
+            "name": "Sports News"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 35,
+        "fields": {
+            "name": "Hobbies & Interests"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 36,
+        "fields": {
+            "name": "Crafts & DIY"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 37,
+        "fields": {
+            "name": "Automotive"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 38,
+        "fields": {
+            "name": "Outdoors & Adventure"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 39,
+        "fields": {
+            "name": "Pets"
+        }
+    },
+    {
+        "model": "read.publication_category",
+        "pk": 40,
+        "fields": {
+            "name": "Collecting"
+        }
+    }
+]

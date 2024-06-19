@@ -11,6 +11,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         subs = FeedSubscription.objects.all()
+        # TODO replace with redis
         feeds_cache = {}
 
         for sub in subs:
